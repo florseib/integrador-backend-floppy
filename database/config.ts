@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 export const conectarDB = async (): Promise<void> => {
     try {
-        await mongoose.connect("mongodb+srv://seibertfloppy:v05qhEwVeYe1V5Xh@floppydb.moogchi.mongodb.net/floppyLibros");
+        const connectionString = process.env.CONNECTIONSTRING;
+        if (!connectionString) {
+            throw new Error('Connection string no definida')
+        }
+        await mongoose.connect(connectionString);
     }
     catch (error) {
         console.log(error);

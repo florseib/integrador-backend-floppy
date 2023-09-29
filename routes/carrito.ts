@@ -21,22 +21,33 @@ router.post("/",
     [
         validarJWT,
         isVerified,
-        check("nombre", "El nombre es obligatorio").not().isEmpty(),
-        check("telefono", "El telefono es obligatorio").not().isEmpty(),
-        check("ciudad", "La ciudad es obligatorio").not().isEmpty(),
-        check("direccion", "La direccion es obligatoria").not().isEmpty(),
-        check("codigoPostal", "El codigo postal es obligatorio").not().isEmpty(),
+        check("detallesEnvio.nombre", "El nombre es obligatorio").not().isEmpty(),
+        check("detallesEnvio.telefono", "El telefono es obligatorio").not().isEmpty(),
+        check("detallesEnvio.ciudad", "La ciudad es obligatoria").not().isEmpty(),
+        check("detallesEnvio.direccion", "La direccion es obligatoria").not().isEmpty(),
+        check("detallesEnvio.codigoPostal", "El codigo postal es obligatorio").not().isEmpty(),
         recolectarErrores
     ],
     async (req: Request, res: Response) => {
+        // const {nombre, telefono, ciudad, direccion, codigoPostal} = req.body;
         const usuarioId: ObjectId = req.body.usuarioConfirmado._id;
         const orderData: ICompra = req.body
 
         const data = {
             ...orderData,
-            usuario: usuarioId,
             fecha: new Date(),
-            estatus: "pending"
+            usuario: usuarioId,
+            //El envío es genérico porque no tengo de dónde sacarlo
+            envio: 500,
+            // items: {},
+            // detallesEnvio: {
+            //     nombre: "",
+            //     telefono: "",
+            //     ciudad: "",
+            //     direccion: "",
+            //     codigoPostal: "",
+            // },
+            estatus: "pending",
         }
 
         const order = new Compra(data);

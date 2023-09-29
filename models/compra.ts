@@ -16,7 +16,7 @@ interface IItem {
 export interface ICompra {
     fecha: Date;
     usuario: Types.ObjectId;
-    precio: Number;
+    // precio: Number;
     envio: Number;
     items: IItem[];
     detallesEnvio: IShippingDetails;
@@ -33,10 +33,10 @@ const CompraSchema = new Schema<ICompra>({
         ref: 'Usuario',
         required: true,
     },
-    precio: {
-        type: Number,
-        required: true,
-    },
+    // precio: {
+    //     type: Number,
+    //     required: true,
+    // },
     envio: {
         type: Number,
         required: true,

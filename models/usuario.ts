@@ -1,7 +1,6 @@
 import { Model, Schema, model } from "mongoose";
 
 export interface IUser {
-    nombre: string;
     email: string;
     password: string;
     code?   : string;
@@ -9,10 +8,6 @@ export interface IUser {
 };
 
 const UserSchema = new Schema<IUser>({
-    nombre: {
-        type: String,
-        required: [true, "El nombre es obligatorio"]
-    },
     email: {
         type: String,
         required: [true, "El correo es obligatorio"]

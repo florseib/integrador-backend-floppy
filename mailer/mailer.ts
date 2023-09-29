@@ -6,7 +6,7 @@ const transporter  = nodemailer.createTransport({
         user: 'floppygatolector@gmail.com',
         pass: 'floppy_gato_lector_8'
     },
-    from: 'camada2717@gmail.com'
+    from: 'floppygatolector@gmail.com'
 });
 
 export const sendEmail = async (to: string, code: string): Promise<void> => {
