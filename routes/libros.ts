@@ -5,7 +5,8 @@ import Categoria from "../models/categoria";
 const router = Router();
 
 router.get('/', async (req: Request, res: Response) => {
-    const libros = await Libro.find().populate("category", "descripcion");
+    // const libros = await Libro.find().populate("category", "descripcion");
+    const libros = await Libro.find();
 
     res.json({
         libros
@@ -17,7 +18,8 @@ router.get('/:id', async (req: Request, res: Response) => {
     const mongoose = require('mongoose');
 
     if (mongoose.Types.ObjectId.isValid(id)) {
-        const libro = await Libro.findById(id).populate("category", "descripcion");
+        // const libro = await Libro.findById(id).populate("category", "descripcion");
+        const libro = await Libro.findById(id);
 
         if (libro)
             res.json({
@@ -33,6 +35,18 @@ router.get('/:id', async (req: Request, res: Response) => {
             msg: "ID inválido"
         })
     }
+})
+
+router.get('/categoria/:category', async (req: Request, res: Response) => {
+    const { category } = req.params;
+    const mongoose = require('mongoose');
+
+    // const libro = await Libro.findById(id).populate("category", "descripcion");
+    const libros = await Libro.find({ categoria: category.toUpperCase() });
+
+    res.json({
+        libros: libros
+    })
 })
 
 router.post("/", async (req: Request, res: Response) => {
@@ -57,7 +71,7 @@ router.post("/", async (req: Request, res: Response) => {
         name: name,
         author: author,
         price: price,
-        category: categoria?._id,
+        category: category.toUpperCase(),
         picture: picture
     })
 

@@ -5,7 +5,7 @@ export interface ILibro {
     name: string,
     author: string,
     price: number,
-    category: ObjectId,
+    category: string,
     picture: string
 }
 
@@ -23,8 +23,8 @@ const LibroSchema = new Schema<ILibro>({
         required: true,
     },
     category: {
-        type: Schema.Types.ObjectId,
-        ref: "Categoria",
+        type: String,
+        // ref: "Categoria",
         required: true
     },
     picture: {
