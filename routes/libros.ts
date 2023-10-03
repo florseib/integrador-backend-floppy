@@ -42,7 +42,7 @@ router.get('/categoria/:category', async (req: Request, res: Response) => {
     const mongoose = require('mongoose');
 
     // const libro = await Libro.findById(id).populate("category", "descripcion");
-    const libros = await Libro.find({ categoria: category.toUpperCase() });
+    const libros = await Libro.find({ category: category.toUpperCase() });
 
     res.json({
         libros: libros
