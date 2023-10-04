@@ -21,6 +21,7 @@ export class Server {
 
     middlewares(): void {
         this.app.use(express.json());
+        this.app.use(cors())
     }
 
     routes(): void {
@@ -34,4 +35,8 @@ export class Server {
             console.log("Corriendo");
         })
     }
+}
+
+function cors(): any {
+    throw new Error("Function not implemented.");
 }
