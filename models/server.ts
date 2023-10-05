@@ -3,6 +3,7 @@ import { conectarDB } from "../database/config";
 import carritoRoutes from "../routes/carrito"
 import librosRoutes from "../routes/libros"
 import authRoutes from "../routes/auth"
+import cors from "cors";
 
 
 export class Server {
@@ -35,8 +36,4 @@ export class Server {
             console.log("Corriendo");
         })
     }
-}
-
-function cors(): any {
-    throw new Error("Function not implemented.");
 }
