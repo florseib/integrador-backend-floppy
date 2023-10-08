@@ -9,13 +9,18 @@ import Compra, { ICompra } from '../models/compra';
 
 const router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
-    const orders = await Compra.find({usuario: req.body.usuarioConfirmado._id}).populate("detallesEnvio", "items")
+router.get("/",
+    [
+        validarJWT,
+        recolectarErrores
+    ],
+    async (req: Request, res: Response) => {
+        const orders = await Compra.find({ usuario: req.body.usuarioConfirmado._id }).populate("detallesEnvio", "items")
 
-    res.status(201).json({
-        orders
+        res.status(201).json({
+            orders
+        })
     })
-})
 
 router.post("/",
     [
