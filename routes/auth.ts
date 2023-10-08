@@ -45,7 +45,12 @@ router.post(
         await sendEmail(email, newCode);
 
         res.status(201).json({
-            usuario
+            usuario: {
+                email: usuario.email,
+                verified: false,
+                _id: usuario._id,
+                __v: usuario.__v
+            }
         })
     }
 );

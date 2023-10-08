@@ -1,8 +1,8 @@
 import express, {Express} from "express";
 import { conectarDB } from "../database/config";
-import carritoRoutes from "../routes/carrito"
-import librosRoutes from "../routes/libros"
-import authRoutes from "../routes/auth"
+import carritoRoutes from "../routes/carrito";
+import librosRoutes from "../routes/libros";
+import authRoutes from "../routes/auth";
 import cors from "cors";
 
 
