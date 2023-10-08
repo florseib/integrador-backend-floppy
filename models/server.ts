@@ -27,7 +27,7 @@ export class Server {
 
     routes(): void {
         this.app.use("/libros", librosRoutes);
-        this.app.use("/carrito", carritoRoutes);
+        this.app.use("/ordenes", carritoRoutes);
         this.app.use("/auth", authRoutes);
     }
 
