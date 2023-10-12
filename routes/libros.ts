@@ -13,7 +13,7 @@ router.get('/', async (req: Request, res: Response) => {
     })
 })
 
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/libro/:id', async (req: Request, res: Response) => {
     const { id } = req.params;
     const mongoose = require('mongoose');
 
