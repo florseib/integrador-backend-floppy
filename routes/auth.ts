@@ -75,6 +75,12 @@ router.post(
                 });
                 return
             }
+            if(!usuario.verified) {
+                res.status(401).json({
+                    msg: "El usuario no está validado"
+                });
+                return
+            }
     
             const validarPassword = bcryptjs.compareSync(password, usuario.password);
     
