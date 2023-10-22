@@ -93,7 +93,7 @@ router.post(
     
             const token = await generarJWT(usuario.id);
     
-            res.status(202).json({
+            res.status(201).json({
                 usuario: {
                     email: usuario.email,
                     _id: usuario._id,

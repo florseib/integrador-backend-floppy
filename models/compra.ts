@@ -59,24 +59,21 @@ const CompraSchema = new Schema<ICompra>({
 			required: true,
 		},
 		codigoPostal: {
-			type: String,
-			required: true,
-		},
+            type: String,
+            required: true,
+        },
     },
-    items: {
-        type: [{
-            libro: {
-                type: Schema.Types.ObjectId,
-                ref: 'Libro',
-                required: true,
-            },
-            cantidad: {
-                type: Number,
-                required: true,
-            }
-        }],
-        required: true,
-    },
+    items: [{
+        libro: {
+            type: Schema.Types.ObjectId,
+            ref: 'Libro',
+            required: true,
+        },
+        cantidad: {
+            type: Number,
+            required: true,
+        }
+    }],
     estatus: {
         type: String,
         required: true,

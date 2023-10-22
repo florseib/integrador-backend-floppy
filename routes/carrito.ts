@@ -15,7 +15,7 @@ router.get("/",
         recolectarErrores
     ],
     async (req: Request, res: Response) => {
-        const orders = await Compra.find({ usuario: req.body.usuarioConfirmado._id }).populate("detallesEnvio", "items")
+        const orders = await Compra.find({ usuario: req.body.usuarioConfirmado._id }).populate("detallesEnvio", "items.libro")
 
         res.status(201).json({
             orders
